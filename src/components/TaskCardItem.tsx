@@ -2,11 +2,16 @@ import React from 'react'
 import { useTask } from '../hooks/useTask'
 import { ITask } from '../types-interfaces'
 
-export const TaskCardItem = ():any => { // Hay que reparar este tipado!
-  const { tasks, toggleDoneTask, deleteTask } = useTask()
+interface PropsCardItem {
+    task: ITask
+    i: number
+}
 
-  return tasks.map((task: ITask, i: number) => (
-        <div className="row" key={i}>
+export const TaskCardItem = ({ task, i }: PropsCardItem): React.ReactElement => { // Hay que reparar este tipado!
+  const { toggleDoneTask, deleteTask } = useTask()
+
+  return (
+        <div className="row">
             <div className="col-md-6 offset-md-3">
                 <div className="card card-body mt-2 text-center">
                     <h2 className={task.done ? 'text-decoration-line-through' : ''}>{task.name}</h2>
@@ -21,5 +26,5 @@ export const TaskCardItem = ():any => { // Hay que reparar este tipado!
                 </div>
             </div>
         </div>
-  ))
+  )
 }

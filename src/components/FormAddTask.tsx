@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
 import { useTask } from '../hooks/useTask'
-const inputSave = useRef<HTMLInputElement>(null)
 
 type EventElement = React.FormEvent<HTMLFormElement>
 
 export const FormAddTask = (): React.ReactElement => {
+  const inputSave = useRef<HTMLInputElement>(null)
   const [newTask, setNewTask] = useState<string>('')
   const { addTask } = useTask()
 
